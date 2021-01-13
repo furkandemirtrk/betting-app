@@ -35,7 +35,7 @@ public class CouponService {
 
 
     public List<CouponDTO> getAllCouponsByCouponStatus(CouponStatusEnum couponStatus) {
-        log.info("getAllCouponsByCouponStatus start");
+        log.info("CouponService getAllCouponsByCouponStatus start");
         return Arrays.asList(modelMapper.map(couponRepository.findAllByStatus(couponStatus), CouponDTO[].class));
     }
 
@@ -44,7 +44,7 @@ public class CouponService {
         /**
          * TODO : Implement create coupon logic
          */
-        log.info("createCoupon start");
+        log.info("CouponService createCoupon start");
         CouponEntity couponEntity = new CouponEntity();
         if (couponCreateRequest != null && !couponCreateRequest.getEventIds().isEmpty()){
             List<EventEntity> eventEntityList = eventRepository.findAllById(couponCreateRequest.getEventIds());
@@ -80,7 +80,7 @@ public class CouponService {
         /**
          * TODO : Implement play coupons
          */
-        log.info("playCoupons start");
+        log.info("CouponService playCoupons start");
         if (couponPlayRequest == null || couponPlayRequest.getCouponIds().isEmpty() || couponPlayRequest.getUserId() == null){
             throw new CouponException(ErrorCodeEnum.FIELD_VALIDATION_ERROR);
         }
@@ -111,6 +111,7 @@ public class CouponService {
         /**
          * TODO : Implement cancel coupon
          */
+        log.info("CouponService cancelCoupon start");
         if (couponId == null){
             throw new CouponException(ErrorCodeEnum.FIELD_VALIDATION_ERROR);
         }
@@ -133,6 +134,7 @@ public class CouponService {
         /**
          * TODO : Implement get played coupons
          */
+        log.info("CouponService getPlayedCoupons start");
         if (userId == null){
             throw new CouponException(ErrorCodeEnum.FIELD_VALIDATION_ERROR);
         }

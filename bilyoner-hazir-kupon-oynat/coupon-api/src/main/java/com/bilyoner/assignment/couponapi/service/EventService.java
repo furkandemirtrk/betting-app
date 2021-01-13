@@ -4,6 +4,7 @@ import com.bilyoner.assignment.couponapi.entity.EventEntity;
 import com.bilyoner.assignment.couponapi.model.EventDTO;
 import com.bilyoner.assignment.couponapi.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EventService {
 
     private final EventRepository eventRepository;
@@ -23,6 +25,7 @@ public class EventService {
     }
 
     public List<EventDTO> getEvents() {
+        log.info("getEvents start");
         List<EventEntity> eventEntityList = eventRepository.findAll();
         return Arrays.asList(modelMapper.map(eventEntityList, EventDTO[].class));
     }
