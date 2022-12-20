@@ -1,4 +1,4 @@
-## Bilyoner
+## Betting Application
 
 **Teknologies used in this project**
     
